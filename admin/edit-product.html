@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musinix Admin - Edit Product</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h2>Musinix Admin</h2>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="sales.html">Sales History</a>
+            <a href="users.html">Users</a>
+            <a href="products.html">Products</a>
+            <a href="bundles.html">Bundles</a>
+            <a href="events.html">Events</a>
+            <a href="../index.html">Back to Store</a>
+        </aside>
+
+        <main class="admin-content">
+            <h1>Edit Product</h1>
+            <p>Modify product information.</p>
+
+            <div class="register-layout">
+                <form class="form-box">
+                    <label>Product name</label>
+                    <input type="text" value="Digital Album">
+
+                    <label>Artist name</label>
+                    <input type="text" value="Musinix Artist">
+
+                    <label>Category</label>
+                    <input type="text" value="Rock">
+
+                    <label>Format</label>
+                    <select>
+                        <option>Digital</option>
+                        <option>Physical</option>
+                    </select>
+
+                    <label>Price</label>
+                    <input type="text" value="10.00">
+
+                    <label>Stock</label>
+                    <input type="text" value="Unlimited">
+
+                    <label>Description</label>
+                    <textarea>Digital music product available in the library.</textarea>
+
+                    <button type="button">Update Product</button>
+                </form>
+
+                <div class="preview-card">
+                    <div class="image-placeholder">Image</div>
+                    <h3>Digital Album</h3>
+                    <p>Product preview.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
