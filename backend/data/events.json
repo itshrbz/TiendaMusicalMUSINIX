@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Music Week",
+    "description": "15% de descuento en álbumes digitales.",
+    "date": "2026-06-20",
+    "type": "Descuento"
+  },
+  {
+    "id": 2,
+    "name": "Vinyl Day",
+    "description": "Ofertas especiales en productos de vinilo.",
+    "date": "2026-06-22",
+    "type": "Promoción"
+  },
+  {
+    "id": 3,
+    "name": "Bundle Festival",
+    "description": "Descuentos en paquetes seleccionados.",
+    "date": "2026-06-25",
+    "type": "Festival"
+  },
+  {
+    "id": 4,
+    "name": "Digital Release",
+    "description": "Lanzamiento de nuevos álbumes digitales.",
+    "date": "2026-06-28",
+    "type": "Lanzamiento"
+  }
+]

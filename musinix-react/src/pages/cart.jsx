@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Cart() {
@@ -99,7 +98,7 @@ function Cart() {
               <span>Total</span>
               <span>$190.00</span>
             </div>
-            <Link to="/checkout" className="btn-checkout">Proceed to Checkout</Link>
+            <Link to="/shipping" className="btn-checkout">Proceed to Checkout</Link>
           </div>
         </div>
       </main>

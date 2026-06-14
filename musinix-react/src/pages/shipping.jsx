@@ -1,64 +1,143 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { api } from '../services/api';
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
+
+const initialPosition = { lat: -17.3935, lng: -66.1570 };
 
 function Shipping() {
+  const navigate = useNavigate();
+  const mapElementRef = useRef(null);
   const mapRef = useRef(null);
   const markerRef = useRef(null);
+  const [position, setPosition] = useState(initialPosition);
+  const [address, setAddress] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [saving, setSaving] = useState(false);
+  const [form, setForm] = useState({
+    recipient_name: '',
+    phone: '',
+    shipping_method: 'standard',
+    references: '',
+  });
+
+  const updatePosition = async (lat, lng, findAddress = true) => {
+    const nextPosition = { lat: Number(lat), lng: Number(lng) };
+    setPosition(nextPosition);
+    markerRef.current?.setLatLng([nextPosition.lat, nextPosition.lng]);
+
+    if (findAddress) {
+      try {
+        const response = await api.reverseGeocode(nextPosition.lat, nextPosition.lng);
+        setAddress(response.data.display_name);
+      } catch {
+        setAddress('No se pudo obtener la dirección escrita. Las coordenadas sí fueron seleccionadas.');
+      }
+    }
+  };
 
   useEffect(() => {
-    // Inicializar el mapa
-    const centroInicial = [-17.3935, -66.1570];
-    mapRef.current = L.map('map').setView(centroInicial, 14);
+    if (!mapElementRef.current || mapRef.current) {
+      return undefined;
+    }
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const map = L.map(mapElementRef.current).setView([initialPosition.lat, initialPosition.lng], 14);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '© OpenStreetMap'
-    }).addTo(mapRef.current);
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
 
-    // Crear marcador arrastrable
-    markerRef.current = L.marker(centroInicial, { draggable: true }).addTo(mapRef.current);
+    const marker = L.marker([initialPosition.lat, initialPosition.lng], {
+      draggable: true,
+      title: 'Ubicación de entrega',
+      alt: 'Marcador de ubicación de entrega',
+    }).addTo(map);
 
-    const actualizarInputs = (lat, lng) => {
-      document.getElementById('lat-display').value = lat.toFixed(6);
-      document.getElementById('lng-display').value = lng.toFixed(6);
-    };
-
-    actualizarInputs(centroInicial[0], centroInicial[1]);
-
-    markerRef.current.on('dragend', (e) => {
-      const posicion = markerRef.current.getLatLng();
-      actualizarInputs(posicion.lat, posicion.lng);
+    marker.on('dragend', () => {
+      const next = marker.getLatLng();
+      updatePosition(next.lat, next.lng);
     });
 
-    mapRef.current.on('click', (e) => {
-      markerRef.current.setLatLng(e.latlng);
-      actualizarInputs(e.latlng.lat, e.latlng.lng);
+    map.on('click', (event) => {
+      updatePosition(event.latlng.lat, event.latlng.lng);
     });
 
-    // Limpieza al desmontar
+    mapRef.current = map;
+    markerRef.current = marker;
+    updatePosition(initialPosition.lat, initialPosition.lng);
+
     return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-      }
+      map.remove();
+      mapRef.current = null;
+      markerRef.current = null;
     };
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Ubicación guardada:\nLat: ${document.getElementById('lat-display').value}\nLng: ${document.getElementById('lng-display').value}`);
+  const handleFieldChange = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const handleAddressSearch = async (event) => {
+    event.preventDefault();
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await api.searchAddress(search);
+      setSearchResults(response.data);
+      if (response.data.length === 0) {
+        setStatus({ type: 'error', message: 'No se encontraron resultados en Bolivia.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: error.message });
+    }
+  };
+
+  const selectSearchResult = (result) => {
+    setAddress(result.display_name);
+    setSearch(result.display_name);
+    setSearchResults([]);
+    updatePosition(result.lat, result.lon, false);
+    mapRef.current?.setView([result.lat, result.lon], 17);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSaving(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await api.saveShipping({
+        ...form,
+        address,
+        latitude: position.lat,
+        longitude: position.lng,
+      });
+      setStatus({ type: 'success', message: response.message });
+      sessionStorage.setItem('musinixShipping', JSON.stringify(response.data));
+      navigate('/payment');
+    } catch (error) {
+      setStatus({ type: 'error', message: error.message });
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
     <>
       <header className="navbar">
-        <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'translateY(-1px)' }}>
-            <path d="M12 2V22M2 12H22M19.07 4.93L4.93 19.07M19.07 19.07L4.93 4.93" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
-          Musinix
-        </div>
+        <div className="logo">✦ Musinix</div>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
@@ -73,22 +152,22 @@ function Shipping() {
           <form className="shipping-form" onSubmit={handleSubmit}>
             <div>
               <h2 className="section-subtitle">Información del destinatario</h2>
-              <p style={{ fontSize: '14px', color: '#757575', marginBottom: '20px' }}>Ingresa los datos de quién recibirá el paquete físico.</p>
+              <p className="form-help">Ingresa los datos de quien recibirá el paquete físico.</p>
             </div>
 
             <div className="form-group">
-              <label htmlFor="fullname">Nombre de quien recibe</label>
-              <input type="text" id="fullname" placeholder="Ej. Cristian Soria" required />
+              <label htmlFor="recipient-name">Nombre de quien recibe</label>
+              <input id="recipient-name" name="recipient_name" type="text" value={form.recipient_name} onChange={handleFieldChange} required />
             </div>
 
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="phone">Teléfono de contacto</label>
-                <input type="tel" id="phone" placeholder="Ej. +591 71234567" required />
+                <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleFieldChange} required />
               </div>
               <div className="form-group">
                 <label htmlFor="shipping-method">Método de entrega</label>
-                <select id="shipping-method">
+                <select id="shipping-method" name="shipping_method" value={form.shipping_method} onChange={handleFieldChange}>
                   <option value="standard">Envío Estándar (3-5 días)</option>
                   <option value="express">Envío Exprés (24 horas)</option>
                 </select>
@@ -97,57 +176,61 @@ function Shipping() {
 
             <div className="map-box-wrapper">
               <label>Ubicación exacta de entrega</label>
-              <p className="map-instruction">Haz clic en cualquier punto del mapa o arrastra el marcador para fijar tu ubicación exacta de entrega.</p>
-              
-              <div id="map" style={{ height: '300px', width: '100%' }}></div>
+              <p className="map-instruction">Busca una dirección o selecciona un punto directamente en el mapa.</p>
 
-              <div className="form-row" style={{ marginTop: '15px' }}>
+              <div className="map-search-row">
+                <input type="text" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Ej. Plaza Colón, Cochabamba" />
+                <button type="button" onClick={handleAddressSearch}>Buscar</button>
+              </div>
+
+              {searchResults.length > 0 && (
+                <div className="map-results">
+                  {searchResults.map((result) => (
+                    <button key={`${result.lat}-${result.lon}`} type="button" onClick={() => selectSearchResult(result)}>
+                      {result.display_name}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div ref={mapElementRef} id="map" />
+
+              <div className="selected-address">
+                <strong>Dirección seleccionada:</strong>
+                <span>{address || 'Seleccionando dirección...'}</span>
+              </div>
+
+              <div className="form-row">
                 <div className="form-group">
                   <label>Latitud elegida</label>
-                  <input type="text" id="lat-display" placeholder="Marcando en el mapa..." readOnly />
+                  <input type="text" value={position.lat.toFixed(6)} readOnly />
                 </div>
                 <div className="form-group">
                   <label>Longitud elegida</label>
-                  <input type="text" id="lng-display" placeholder="Marcando en el mapa..." readOnly />
+                  <input type="text" value={position.lng.toFixed(6)} readOnly />
                 </div>
               </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="references">Referencias adicionales</label>
-              <textarea id="references" rows="3" placeholder="Ej. Edificio Las Torres, Departamento 4B. Portón de color negro."></textarea>
+              <textarea id="references" name="references" rows="3" value={form.references} onChange={handleFieldChange} />
             </div>
-            
-            {/* Botón movido fuera del formulario si es necesario, o manejado vía onSubmit */}
+
+            {status.message && <p className={`status-message status-${status.type}`}>{status.message}</p>}
+            <button type="submit" className="btn-submit" disabled={saving}>
+              {saving ? 'Guardando...' : 'Continuar al Pago'}
+            </button>
           </form>
 
           <div className="order-summary">
             <h3 className="summary-title">Tu Pedido</h3>
-            <div className="summary-row">
-              <span>Mili Bundle (Físico)</span>
-              <span>$95.00</span>
-            </div>
-            <div className="summary-row">
-              <span>Gorillaz Pack (Digital)</span>
-              <span>$95.00</span>
-            </div>
-            <div className="summary-row" style={{ borderTop: '1px dashed #e0e0e0', paddingTop: '15px', marginTop: '15px' }}>
-              <span>Subtotal</span>
-              <span>$190.00</span>
-            </div>
-            <div className="summary-row">
-              <span>Costo de envío</span>
-              <span>$0.00</span>
-            </div>
-            <div className="summary-row total">
-              <span>Total</span>
-              <span>$190.00</span>
-            </div>
-            <button type="button" className="btn-submit" onClick={handleSubmit}>Continuar al Pago</button>
+            <div className="summary-row"><span>Mili Bundle</span><span>$95.00</span></div>
+            <div className="summary-row"><span>Gorillaz Pack</span><span>$95.00</span></div>
+            <div className="summary-row total"><span>Total</span><span>$190.00</span></div>
           </div>
         </div>
       </main>
-      {/* Footer omitido por brevedad, igual a los anteriores */}
     </>
   );
 }
