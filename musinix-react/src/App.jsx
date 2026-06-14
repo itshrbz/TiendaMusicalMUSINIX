@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router-dom';
 
 // Importación de componentes desde la carpeta 'pages'
 import BundleDetail from './pages/bundle-detail';
@@ -28,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/bundle-detail" element={<BundleDetail />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Navigate to="/shipping" replace />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/events" element={<Events />} />
         <Route path="/history" element={<History />} />
