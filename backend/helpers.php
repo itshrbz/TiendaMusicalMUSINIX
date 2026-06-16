@@ -98,6 +98,99 @@ function appendJsonFile(string $filename, array $record): array
     }
 }
 
+
+function writeJsonFile(string $filename, array $records): void
+{
+    if (!is_dir(DATA_DIR)) {
+        mkdir(DATA_DIR, 0775, true);
+    }
+
+    $path = DATA_DIR . '/' . $filename;
+    $encoded = json_encode(
+        array_values($records),
+        JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+    );
+
+    if ($encoded === false || file_put_contents($path, $encoded, LOCK_EX) === false) {
+        jsonResponse(['ok' => false, 'message' => 'No se pudo guardar el archivo de datos.'], 500);
+    }
+}
+
+function createJsonRecord(string $filename, array $record): array
+{
+    $records = readJsonFile($filename);
+    $ids = array_map(static fn(array $item): int => (int) ($item['id'] ?? 0), $records);
+    $record['id'] = $ids === [] ? 1 : max($ids) + 1;
+    $record['created_at'] = date(DATE_ATOM);
+    $records[] = $record;
+    writeJsonFile($filename, $records);
+    return $record;
+}
+
+function updateJsonRecord(string $filename, int $id, array $changes): ?array
+{
+    $records = readJsonFile($filename);
+    $updated = null;
+
+    foreach ($records as $index => $record) {
+        if ((int) ($record['id'] ?? 0) !== $id) {
+            continue;
+        }
+
+        $records[$index] = array_merge($record, $changes, [
+            'id' => $id,
+            'updated_at' => date(DATE_ATOM),
+        ]);
+        $updated = $records[$index];
+        break;
+    }
+
+    if ($updated !== null) {
+        writeJsonFile($filename, $records);
+    }
+
+    return $updated;
+}
+
+function deleteJsonRecord(string $filename, int $id): bool
+{
+    $records = readJsonFile($filename);
+    $filtered = array_values(array_filter(
+        $records,
+        static fn(array $record): bool => (int) ($record['id'] ?? 0) !== $id
+    ));
+
+    if (count($filtered) === count($records)) {
+        return false;
+    }
+
+    writeJsonFile($filename, $filtered);
+    return true;
+}
+
+function findJsonRecord(string $filename, int $id): ?array
+{
+    foreach (readJsonFile($filename) as $record) {
+        if ((int) ($record['id'] ?? 0) === $id) {
+            return $record;
+        }
+    }
+
+    return null;
+}
+
+function queryId(): ?int
+{
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    return ($id !== false && $id !== null && $id > 0) ? $id : null;
+}
+
+function publicUser(array $user): array
+{
+    unset($user['password_hash']);
+    return $user;
+}
+
 function nominatimRequest(string $path, array $params): array
 {
     if (!is_dir(CACHE_DIR)) {

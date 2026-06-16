@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "order_number": "#001",
+    "user": "Jairo Marquez",
+    "product": "Digital Album",
+    "type": "Digital",
+    "total": 10,
+    "status": "Completed",
+    "date": "2026-06-08"
+  },
+  {
+    "id": 2,
+    "order_number": "#002",
+    "user": "Cristian Soria",
+    "product": "Vinyl Bundle",
+    "type": "Physical",
+    "total": 25,
+    "status": "Pending",
+    "date": "2026-06-08"
+  }
+]

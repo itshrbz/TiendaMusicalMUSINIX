@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Admin Musinix",
+    "email": "admin@musinix.com",
+    "password_hash": "$2y$12$DkzS6UV2pZxPm/77WcrzduGyYEnXK3J4oszjoYNfqnVQHOIuBLOJ.",
+    "role": "admin",
+    "status": "active",
+    "created_at": "2026-06-16T00:00:00-04:00"
+  },
+  {
+    "id": 2,
+    "name": "Jairo Marquez",
+    "email": "jairo@email.com",
+    "password_hash": "$2y$12$DkzS6UV2pZxPm/77WcrzduGyYEnXK3J4oszjoYNfqnVQHOIuBLOJ.",
+    "role": "user",
+    "status": "active",
+    "created_at": "2026-06-16T00:00:00-04:00"
+  }
+]

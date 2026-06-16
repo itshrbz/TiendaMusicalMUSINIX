@@ -1,20 +1,60 @@
 # Backend PHP de Musinix
 
-API REST sencilla para conectar React con PHP sin interferir con Firebase Authentication ni con la base de datos Firebase.
+API REST utilizada por el frontend React.
 
-## URL local con XAMPP
+## Comprobación
 
-`http://localhost/TiendaMusicalMUSINIX/backend/api.php`
+```text
+http://localhost/TiendaMusicalMUSINIX/backend/api.php?resource=health
+```
 
-## Endpoints
+## Recursos
 
-- `GET ?resource=health`
-- `GET ?resource=products`
-- `GET ?resource=products&id=1`
-- `GET ?resource=events`
-- `POST ?resource=contact`
-- `POST ?resource=shipping`
-- `GET ?resource=geocode&q=Cochabamba`
-- `GET ?resource=reverse&lat=-17.3935&lon=-66.1570`
+```text
+health
+products
+events
+bundles
+sales
+users
+songs
+contact
+shipping
+geocode
+reverse
+dashboard
+```
 
-Los mensajes y envíos se guardan temporalmente en archivos JSON para demostrar el backend. Después se pueden migrar a Firebase sin cambiar las pantallas principales.
+## Base de datos
+
+Importar en phpMyAdmin:
+
+```text
+backend/database/musinix.sql
+```
+
+La base contiene las tablas:
+
+```text
+users
+songs
+```
+
+Mientras MySQL no esté disponible, los recursos `users` y `songs` utilizan automáticamente los archivos JSON locales de respaldo.
+
+## Métodos CRUD
+
+Los recursos `products`, `events`, `bundles`, `users` y `songs` permiten:
+
+```text
+GET
+POST
+PUT
+DELETE
+```
+
+Para actualizar o eliminar se envía el ID en la URL:
+
+```text
+?resource=songs&id=1
+```

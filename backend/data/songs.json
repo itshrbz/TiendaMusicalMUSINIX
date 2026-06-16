@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "String Theocracy",
+    "artist": "Mili",
+    "album": "To Kill a Living Book",
+    "genre": "Alternative",
+    "duration": "3:03",
+    "price": 1.99,
+    "cover_url": "https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?w=900",
+    "audio_url": "",
+    "active": 1,
+    "created_at": "2026-06-16T00:00:00-04:00"
+  },
+  {
+    "id": 2,
+    "title": "Feel Good Inc.",
+    "artist": "Gorillaz",
+    "album": "Demon Days",
+    "genre": "Alternative",
+    "duration": "3:42",
+    "price": 1.99,
+    "cover_url": "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=900",
+    "audio_url": "",
+    "active": 1,
+    "created_at": "2026-06-16T00:00:00-04:00"
+  },
+  {
+    "id": 3,
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "album": "A Night at the Opera",
+    "genre": "Rock",
+    "duration": "5:55",
+    "price": 1.49,
+    "cover_url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=900",
+    "audio_url": "",
+    "active": 1,
+    "created_at": "2026-06-16T00:00:00-04:00"
+  }
+]

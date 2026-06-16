@@ -18,6 +18,7 @@ function Home() {
           <Link to="/contact">Contact</Link>
           <Link to="/library">Library</Link>
           <Link to="/profile">Profile</Link>
+          <Link to="/admin">Admin</Link>
           <Link className="btn-nav" to="/login">Login</Link>
         </nav>
       </header>
