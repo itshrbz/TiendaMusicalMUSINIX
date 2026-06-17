@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Invoice() {
@@ -12,26 +11,32 @@ function Invoice() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/history">History</Link>
+          <Link to="/">Principal</Link>
+          <Link to="/products">Productos</Link>
+          <Link to="/shop">Tienda de Paquetes</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="/contact">Contacto</Link>
+          <Link to="/library">Biblioteca</Link>
+          <Link to="/profile">Perfil</Link>
+          <Link to="/admin">Admin</Link>
+          <Link className="btn-nav" to="/login">Iniciar Sesión</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="invoice-box">
-          <h1>Thanks for your order</h1>
-          <p>Your purchase was completed successfully.</p>
+          <h1>Gracias por tu compra</h1>
+          <p>Tu compra se ha completado correctamente.</p>
 
           <div className="invoice-data">
             <div>
-              <h3>Musinix Store</h3>
-              <p>Online Music Shop</p>
+              <h3>Tienda Musinix</h3>
+              <p>Tienda de música en línea</p>
               <p>Cochabamba, Bolivia</p>
             </div>
 
             <div>
-              <h3>Customer</h3>
+              <h3>Cliente</h3>
               <p>Jairo Marquez</p>
               <p>jairo@email.com</p>
             </div>
@@ -40,22 +45,22 @@ function Invoice() {
           <table className="table">
             <thead>
               <tr>
-                <th>Product</th>
-                <th>Type</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th>Producto</th>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Digital Album</td>
+                <td>Album Digital</td>
                 <td>Digital</td>
                 <td>1</td>
                 <td>$10.00</td>
               </tr>
               <tr>
-                <td>Vinyl Bundle</td>
-                <td>Physical</td>
+                <td>Vinyl Paquete</td>
+                <td>Físico</td>
                 <td>1</td>
                 <td>$25.00</td>
               </tr>
@@ -64,13 +69,13 @@ function Invoice() {
 
           <div className="total-box">
             <p>Subtotal: $35.00</p>
-            <p>Shipping: $5.00</p>
+            <p>Envio: $5.00</p>
             <h2>Total: $40.00</h2>
           </div>
 
           <div className="invoice-buttons">
-            <button type="button">Download PDF</button>
-            <Link className="button-link" to="/shop">Back to shop</Link>
+            <button type="button">Descargar PDF</button>
+            <Link className="button-link" to="/shop">Volver a la tienda</Link>
           </div>
         </section>
       </main>

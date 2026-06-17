@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "To Kill a Living Book",
+    "artist": "Mili",
+    "format": "Digital",
+    "price": 10,
+    "stock": 100,
+    "description": "Álbum digital en formato de alta calidad para descargar.",
+    "image": "https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?w=900"
+  },
+  {
+    "id": 2,
+    "name": "Demon Days",
+    "artist": "Gorillaz",
+    "format": "Vinyl",
+    "price": 25,
+    "stock": 18,
+    "description": "Edición física en vinilo para coleccionistas.",
+    "image": "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=900"
+  },
+  {
+    "id": 3,
+    "name": "Classic Rock Collection",
+    "artist": "Various Artists",
+    "format": "CD",
+    "price": 15,
+    "stock": 35,
+    "description": "Colección de clásicos del rock en disco compacto.",
+    "image": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=900"
+  },
+  {
+    "id": 4,
+    "name": "Retro Sessions",
+    "artist": "Musinix Records",
+    "format": "Cassette",
+    "price": 12,
+    "stock": 12,
+    "description": "Edición limitada en cassette con diseño retro.",
+    "image": "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=900"
+  }
+]

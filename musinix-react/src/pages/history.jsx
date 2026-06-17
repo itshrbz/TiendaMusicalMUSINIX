@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function PurchaseHistory() {
@@ -12,47 +11,52 @@ function PurchaseHistory() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/library">Library</Link>
-          <Link className="btn-nav" to="/cart">Cart</Link>
+          <Link to="/">Principal</Link>
+          <Link to="/products">Productos</Link>
+          <Link to="/shop">Tienda de Paquetes</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="/contact">Contacto</Link>
+          <Link to="/library">Biblioteca</Link>
+          <Link to="/profile">Perfil</Link>
+          <Link to="/admin">Admin</Link>
+          <Link className="btn-nav" to="/login">Iniciar Sesión</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="section">
-          <h1>Purchase History</h1>
+          <h1>Historial de Compras</h1>
 
           <div className="filters">
             <input type="date" />
             <input type="date" />
-            <button>Filter</button>
+            <button>Filtrar</button>
           </div>
 
           <table className="table">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Product</th>
-                <th>Type</th>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Tipo</th>
                 <th>Total</th>
-                <th>Invoice</th>
+                <th>Factura</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>08/06/2026</td>
-                <td>Digital Album</td>
+                <td>Album Digital</td>
                 <td>Digital</td>
                 <td>$10.00</td>
-                <td><Link to="/invoice">View</Link></td>
+                <td><Link to="/invoice">Ver</Link></td>
               </tr>
               <tr>
                 <td>08/06/2026</td>
-                <td>Vinyl Bundle</td>
-                <td>Physical</td>
+                <td>Vinyl Paquete</td>
+                <td>Físico</td>
                 <td>$25.00</td>
-                <td><Link to="/invoice">View</Link></td>
+                <td><Link to="/invoice">Ver</Link></td>
               </tr>
             </tbody>
           </table>
@@ -69,11 +73,11 @@ function PurchaseHistory() {
             </svg>
             Musinix
           </h3>
-          <p>Online music shop</p>
+          <p>Tienda de música en línea</p>
         </div>
 
         <div>
-          <h4>Customer Support</h4>
+          <h4>Soporte al Cliente</h4>
           <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             Contact

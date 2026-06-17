@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Verification() {
@@ -12,24 +11,30 @@ function Verification() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <Link to="/">Principal</Link>
+          <Link to="/products">Productos</Link>
+          <Link to="/shop">Tienda de Paquetes</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="/contact">Contacto</Link>
+          <Link to="/library">Biblioteca</Link>
+          <Link to="/profile">Perfil</Link>
+          <Link to="/admin">Admin</Link>
+          <Link className="btn-nav" to="/login">Iniciar Sesión</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="form-section">
-          <h1>Account Verification</h1>
-          <p>Enter the verification code sent to your email.</p>
+          <h1>Verificación de Cuenta</h1>
+          <p>Ingresa el código de verificación enviado a tu correo electrónico.</p>
 
           <form className="center-form">
-            <label>Verification code</label>
+            <label>Código de verificación</label>
             <input type="text" />
 
-            <button type="button">Verify Account</button>
+            <button type="button">Verificar Cuenta</button>
 
-            <p><Link to="/login">Back to login</Link></p>
+            <p><Link to="/login">Volver al inicio de sesión</Link></p>
           </form>
         </section>
       </main>

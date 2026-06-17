@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Register() {
@@ -12,34 +11,34 @@ function Register() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/">Principal</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="form-section">
-          <h1>Create Account</h1>
-          <p>Create your account to buy music products.</p>
+          <h1>Crea tu cuenta</h1>
+          <p>Crea tu cuenta para comprar productos musicales.</p>
 
           <form className="center-form">
-            <label>Full name</label>
+            <label>Nombre completo</label>
             <input type="text" />
 
             <label>Email</label>
             <input type="email" />
 
-            <label>Phone</label>
+            <label>Telefono</label>
             <input type="text" />
 
-            <label>Password</label>
+            <label>Contraseña</label>
             <input type="password" />
 
-            <label>Confirm password</label>
+            <label>Confirmar contraseña</label>
             <input type="password" />
 
-            <Link className="button-link" to="/verify">Create Account</Link>
+            <Link className="button-link" to="/verify">Crear cuenta</Link>
 
-            <p>Already have an account? <Link to="/login">Login</Link></p>
+            <p>Ya tienes una cuenta? <Link to="/login">Login</Link></p>
           </form>
         </section>
       </main>

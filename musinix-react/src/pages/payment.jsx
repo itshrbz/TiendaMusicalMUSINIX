@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Payment() {
@@ -12,27 +11,33 @@ function Payment() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/cart">Cart</Link>
+          <Link to="/">Principal</Link>
+          <Link to="/products">Productos</Link>
+          <Link to="/shop">Tienda de Paquetes</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="/contact">Contacto</Link>
+          <Link to="/library">Biblioteca</Link>
+          <Link to="/profile">Perfil</Link>
+          <Link to="/admin">Admin</Link>
+          <Link className="btn-nav" to="/login">Iniciar Sesión</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="section">
-          <h1>Payment</h1>
+          <h1>Pago</h1>
 
           <div className="cart-layout">
             <form className="form-box">
-              <h2>Credit or Debit Card</h2>
+              <h2>Tarjeta de Crédito o Débito</h2>
 
-              <label>Card holder name</label>
+              <label>Nombre del titular de la tarjeta</label>
               <input type="text" />
 
-              <label>Card number</label>
+              <label>Número de tarjeta</label>
               <input type="text" />
 
-              <label>Expiration date</label>
+              <label>Fecha de vencimiento</label>
               <input type="text" />
 
               <label>CVV</label>
@@ -40,11 +45,11 @@ function Payment() {
             </form>
 
             <div className="summary-box">
-              <h2>Payment Summary</h2>
-              <p>Products: $35.00</p>
-              <p>Shipping: $5.00</p>
+              <h2>Resumen del Pago</h2>
+              <p>Productos: $35.00</p>
+              <p>Envío: $5.00</p>
               <h3>Total: $40.00</h3>
-              <Link className="button-link" to="/invoice">Confirm Payment</Link>
+              <Link className="button-link" to="/invoice">Confirmar Pago</Link>
             </div>
           </div>
         </section>

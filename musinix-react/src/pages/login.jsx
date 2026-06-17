@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Login() {
@@ -12,25 +11,25 @@ function Login() {
           Musinix
         </div>
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/">Principal</Link>
         </nav>
       </header>
 
       <main className="container">
         <section className="form-section">
           <h1>Login</h1>
-          <p>Enter your account to continue.</p>
+          <p>Ingrese una cuenta para continuar.</p>
 
           <form className="center-form">
             <label>Email</label>
             <input type="email" />
 
-            <label>Password</label>
+            <label>Contraseña</label>
             <input type="password" />
 
             <Link className="button-link" to="/profile">Login</Link>
 
-            <p>Do not have an account? <Link to="/register">Register</Link></p>
+            <p>¿No tiene una cuenta? <Link to="/register">Regístrese</Link></p>
           </form>
         </section>
       </main>

@@ -1,0 +1,34 @@
+REVISIÓN FINAL - MUSINIX
+
+1. IMPLEMENTACIÓN ANTERIOR CONSERVADA
+- Backend PHP: conservado.
+- Productos y eventos desde PHP: conservado.
+- Formulario de contacto: conservado.
+- Envíos: conservado.
+- OpenStreetMap + Leaflet: conservado.
+- Búsqueda y selección de dirección: conservado.
+- Flujo carrito -> envío -> pago: conservado.
+- shipping.jsx se mantuvo sin cambios respecto al ZIP recibido.
+
+2. NUEVAS PARTES
+- Todo el panel admin fue convertido de HTML a JSX.
+- Se agregaron rutas React para dashboard, ventas, usuarios, productos, canciones, bundles y eventos.
+- Se agregaron formularios JSX para registrar y editar.
+- Se agregó CRUD de usuarios.
+- Se agregó base de datos MySQL para usuarios y canciones.
+- Se agregó API CRUD de canciones.
+- Se agregó respaldo JSON automático si MySQL todavía no está disponible.
+
+3. PRUEBAS REALIZADAS
+- PHP sin errores de sintaxis.
+- React compila correctamente con npm run build.
+- ESLint termina sin errores.
+- API health responde correctamente.
+- CRUD de usuarios probado.
+- CRUD de canciones probado.
+- CRUD de productos, bundles y eventos probado.
+
+4. DETALLE DEL ZIP RECIBIDO
+El directorio .git del ZIP estaba desactualizado y apuntaba al commit antiguo 7885ffb.
+Los archivos del backend y del mapa sí estaban presentes, pero Git los mostraba como cambios sin registrar.
+Por seguridad, el ZIP final no incluye .git para no reemplazar ni dañar el repositorio real del usuario.

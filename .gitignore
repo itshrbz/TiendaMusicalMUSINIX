@@ -1,0 +1,5 @@
+musinix-react/node_modules/
+musinix-react/dist/
+backend/cache/nominatim/*.json
+backend/cache/nominatim/last_request.txt
+*.log
