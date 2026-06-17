@@ -17,7 +17,6 @@ function AdminDashboard() {
         <div>
           <p className="eyebrow">Panel administrativo React</p>
           <h1>Dashboard</h1>
-          <p>Resumen general de Musinix.</p>
         </div>
       </div>
 

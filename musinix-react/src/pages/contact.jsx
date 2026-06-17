@@ -53,7 +53,7 @@ function Contact() {
 
       <main className="container">
         <section className="section">
-          <h1>Contact Us</h1>
+          <h1>Contáctenos</h1>
           <p>El formulario guarda los mensajes mediante el backend PHP.</p>
 
           <div className="contact-box">
@@ -65,16 +65,16 @@ function Contact() {
             </div>
 
             <form className="form-box" onSubmit={handleSubmit}>
-              <label htmlFor="contact-name">Name</label>
+              <label htmlFor="contact-name">Nombre</label>
               <input id="contact-name" name="name" type="text" value={form.name} onChange={handleChange} required />
 
               <label htmlFor="contact-email">Email</label>
               <input id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} required />
 
-              <label htmlFor="contact-phone">Phone</label>
+              <label htmlFor="contact-phone">Teléfono</label>
               <input id="contact-phone" name="phone" type="text" value={form.phone} onChange={handleChange} />
 
-              <label htmlFor="contact-message">Message</label>
+              <label htmlFor="contact-message">Mensaje</label>
               <textarea id="contact-message" name="message" value={form.message} onChange={handleChange} required />
 
               {status.message && (
@@ -82,7 +82,7 @@ function Contact() {
               )}
 
               <button type="submit" disabled={sending}>
-                {sending ? 'Sending...' : 'Send Message'}
+                {sending ? 'Sending...' : 'Enviar Mensaje'}
               </button>
             </form>
           </div>

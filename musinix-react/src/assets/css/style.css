@@ -31,7 +31,6 @@ a:hover {
 /* ==========================================================================
    2. NAVEGACIÓN & HEADER (Navbar & Minimalist Header)
    ========================================================================== */
-/* --- Header Minimalista (UI Nueva) --- */
 .header {
     display: flex;
     justify-content: space-between;
@@ -73,7 +72,6 @@ a:hover {
     font-weight: 500;
 }
 
-/* Botón de Login estilo Píldora Negra */
 .btn-login {
     background-color: #000000;
     color: #ffffff;
@@ -89,7 +87,6 @@ a:hover {
     opacity: 0.8;
 }
 
-/* --- Navbar Flotante Comercial --- */
 .navbar {
     width: 90%;
     max-width: 1200px;
@@ -120,7 +117,7 @@ a:hover {
 .navbar a {
     font-size: 14px;
     font-weight: 600;
-    color: #666666;
+    color: #454545;
 }
 
 .navbar a:hover {
@@ -128,12 +125,11 @@ a:hover {
     opacity: 1;
 }
 
-/* Botones genéricos de navegación */
 .btn-nav,
 .button-link,
 button {
     background: #000000;
-    color: #ffffff;
+    color: #fcfcfc;
     border: none;
     padding: 12px 24px;
     border-radius: 30px;
@@ -151,7 +147,7 @@ button {
 .btn-nav:hover,
 .button-link:hover,
 button:hover {
-    background: #1a1a1a;
+    background: #9b9b9b;
     opacity: 0.9;
 }
 
@@ -176,8 +172,8 @@ button:hover {
     padding: 40px 20px 80px 20px;
 }
 
-/* Bloque Hero */
 .hero h1 {
+    color: #000000 !important;
     font-size: 42px;
     font-weight: 800;
     letter-spacing: -1px;
@@ -209,17 +205,17 @@ button:hover {
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.75;
     margin-top: 5px;
 }
 
-/* Secciones */
 .section {
     margin-bottom: 60px;
 }
 
 .section h1,
 .section h2 {
+    color: #000000 !important;
     font-size: 28px;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -227,12 +223,11 @@ button:hover {
 }
 
 .section p {
-    color: #444444;
+    color: #2b2b2b;
     font-size: 15px;
     line-height: 1.7;
 }
 
-/* Contenedores de Imágenes placeholders */
 .image-placeholder,
 .small-image,
 .detail-image,
@@ -243,9 +238,9 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #888888;
+    color: #555555;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     overflow: hidden;
     transition: border-color 0.2s ease;
 }
@@ -294,7 +289,7 @@ button:hover {
 
 .product-card p {
     font-size: 14px;
-    color: #666666;
+    color: #454545;
     margin-bottom: 16px;
 }
 
@@ -322,6 +317,7 @@ button:hover {
 }
 
 .section-subtitle { 
+    color: #000000 !important;
     font-size: 20px; 
     font-weight: 700; 
     margin-bottom: 5px; 
@@ -344,9 +340,10 @@ button:hover {
     text-transform: uppercase; 
     letter-spacing: 0.5px; 
     margin-bottom: 8px; 
-    color: #000; 
+    color: #000000; 
 }
 
+/* CORRECCIÓN: Forzar texto negro dentro de los inputs con fondo blanco */
 .form-group input, 
 .form-group textarea, 
 .form-group select { 
@@ -356,13 +353,14 @@ button:hover {
     border: 1px solid #e0e0e0; 
     border-radius: 12px; 
     outline: none; 
-    background-color: #fff; 
+    background-color: #ffffff; 
+    color: #000000 !important; 
 }
 
 .form-group input:focus, 
 .form-group textarea:focus, 
 .form-group select:focus { 
-    border-color: #000; 
+    border-color: #000000; 
 }
 
 .contact-box {
@@ -373,8 +371,8 @@ button:hover {
 }
 
 .contact-info {
-    background: #3a3333;
-    color: #252525;
+    background: #faf8f8;
+    color: #ffffff;
     padding: 40px;
     border-radius: 16px;
     display: flex;
@@ -385,7 +383,7 @@ button:hover {
 .contact-info p {
     margin-top: 20px;
     font-size: 14px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .form-box,
@@ -395,6 +393,7 @@ button:hover {
     gap: 16px;
 }
 
+/* CORRECCIÓN: Forzar texto negro en formularios alternativos */
 .form-box input,
 .form-box textarea,
 .form-box select,
@@ -405,6 +404,7 @@ button:hover {
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     background: #ffffff;
+    color: #000000 !important;
     outline: none;
     transition: border-color 0.2s ease;
 }
@@ -429,6 +429,7 @@ button:hover {
 }
 
 .form-section h1 {
+    color: #000000;
     font-size: 32px;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -443,10 +444,9 @@ button:hover {
 .center-form p {
     text-align: center;
     font-size: 13px;
-    color: #666666;
+    color: #454545;
 }
 
-/* --- Zona de Mapa de Checkout --- */
 .map-box-wrapper { 
     margin-top: 10px; 
     display: flex; 
@@ -456,7 +456,7 @@ button:hover {
 
 .map-instruction { 
     font-size: 13px; 
-    color: #757575; 
+    color: #505050; 
 }
 
 #map { 
@@ -475,13 +475,13 @@ button:hover {
    6. CARRITO DE COMPRAS Y DETALLE DE PRODUCTO
    ========================================================================== */
 .page-title { 
+    color: #000000 !important;
     font-size: 48px; 
     font-weight: 800; 
     letter-spacing: -1px; 
     margin-bottom: 50px; 
 }
 
-/* Layout Asimétrico Premium para Carrito */
 .cart-layout {
     display: grid;
     grid-template-columns: 7fr 4fr;
@@ -494,7 +494,6 @@ button:hover {
     gap: 35px;
 }
 
-/* Estructura del Item del Carrito Rediseñado */
 .cart-item {
     display: flex;
     gap: 25px;
@@ -502,7 +501,6 @@ button:hover {
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* Contenedor de Imagen de Disco/Bundle con esquinas redondeadas */
 .item-image {
     width: 140px;
     height: 140px;
@@ -532,7 +530,7 @@ button:hover {
 
 .item-artist {
     font-size: 14px;
-    color: #757575;
+    color: #505050;
     margin-bottom: 12px;
 }
 
@@ -544,7 +542,7 @@ button:hover {
 
 .item-discount-text {
     font-size: 14px;
-    color: #757575;
+    color: #505050;
     font-weight: 400;
 }
 
@@ -565,7 +563,6 @@ button:hover {
     margin-top: 15px;
 }
 
-/* Controles de Cantidad en Píldora */
 .quantity-control {
     display: flex;
     align-items: center;
@@ -595,7 +592,7 @@ button:hover {
 .btn-remove {
     background: none;
     border: none;
-    color: #757575;
+    color: #505050;
     font-size: 13px;
     cursor: pointer;
     text-decoration: underline;
@@ -605,7 +602,6 @@ button:hover {
     color: #000000;
 }
 
-/* --- Módulos laterales de resumen --- */
 .order-summary { 
     background-color: #ffffff; 
     height: fit-content; 
@@ -644,7 +640,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    color: #757575;
+    color: #505050;
     margin-bottom: 15px;
 }
 
@@ -657,7 +653,6 @@ button:hover {
     color: #000000;
 }
 
-/* Botones de Finalización */
 .btn-checkout {
     display: block;
     background-color: #000000;
@@ -679,8 +674,8 @@ button:hover {
 .btn-submit { 
     display: block; 
     width: 100%; 
-    background-color: #000; 
-    color: #fff; 
+    background-color: #000000; 
+    color: #ffffff; 
     text-align: center; 
     padding: 16px; 
     border: none; 
@@ -696,7 +691,6 @@ button:hover {
     opacity: 0.9; 
 }
 
-/* Vista de Detalle de Ítem Individual */
 .detail-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -731,6 +725,7 @@ button:hover {
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     font-size: 14px;
+    color: #000000 !important;
 }
 
 .table {
@@ -746,7 +741,7 @@ button:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #666666;
+    color: #454545; 
     border-bottom: 1px solid #e0e0e0;
     padding: 16px;
     text-align: left;
@@ -787,7 +782,7 @@ button:hover {
 .invoice-box > p {
     text-align: center;
     font-size: 14px;
-    color: #666666;
+    color: #454545; 
     margin-bottom: 40px;
 }
 
@@ -819,19 +814,36 @@ button:hover {
 }
 
 /* ==========================================================================
-   9. INTERFAZ DE ADMINISTRACIÓN (Dashboard Layouts)
+   9. INTERFAZ DE ADMINISTRACIÓN (Dashboard Layouts - PREMIUM DARK MODE)
    ========================================================================== */
 .admin-layout {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 260px 1fr;
-    background: #fafafa;
+    background: #121212; 
+}
+
+/* Etiquetas en blanco para el contraste del fondo oscuro */
+.admin-layout label,
+.register-layout label,
+.admin-content label {
+    color: #ffffff !important;
+}
+
+/* CORRECCIÓN EXPLÍCITA: Asegura texto negro en los textboxes blancos dentro del módulo admin */
+.admin-layout input,
+.admin-layout textarea,
+.admin-layout select,
+.register-layout input,
+.register-layout textarea,
+.register-layout select {
+    color: #000000 !important;
 }
 
 .sidebar {
-    background: #ffffff;
+    background: #1a1a1a; 
     padding: 40px 24px;
-    border-right: 1px solid #e0e0e0;
+    border-right: 1px solid #2d2d2d;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -842,7 +854,7 @@ button:hover {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #999999;
+    color: #888888; 
     margin-bottom: 25px;
     padding-left: 12px;
 }
@@ -852,29 +864,30 @@ button:hover {
     border-radius: 12px;
     font-size: 14px;
     font-weight: 600;
-    color: #555555;
+    color: #aaaaaa; 
     transition: all 0.2s ease;
 }
 
 .sidebar a:hover {
-    background: #f5f5f5;
-    color: #000000;
+    background: #252525;
+    color: #ffffff;
 }
 
 .sidebar a.active {
-    background: #000000;
-    color: #ffffff;
+    background: #ffffff; 
+    color: #000000 !important;
 }
 
 .admin-content {
     padding: 60px;
-    background: #fafafa;
+    background: #121212;
 }
 
 .admin-content h1 {
     font-size: 32px;
     font-weight: 800;
     letter-spacing: -0.5px;
+    color: #ffffff; 
 }
 
 .admin-header {
@@ -889,7 +902,6 @@ button:hover {
     margin-bottom: 50px;
 }
 
-/* Estructura de Registro con Live Preview */
 .register-layout {
     display: grid;
     grid-template-columns: 6.5fr 4.5fr;
@@ -898,14 +910,15 @@ button:hover {
 }
 
 .preview-card {
-    background: #ffffff;
+    background: #1a1a1a;
     padding: 30px;
     border-radius: 18px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #2d2d2d;
     height: fit-content;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.01);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.2);
     position: sticky;
     top: 40px;
+    color: #ffffff;
 }
 
 /* ==========================================================================
@@ -944,7 +957,7 @@ button:hover {
 
 .footer-brand p {
     font-size: 13px;
-    color: #757575;
+    color: #505050; 
     margin-bottom: 20px;
 }
 
@@ -959,7 +972,7 @@ button:hover {
 .social-icons svg {
     width: 18px;
     height: 18px;
-    fill: #757575;
+    fill: #505050; 
     transition: fill 0.2s;
     cursor: pointer;
 }
@@ -988,7 +1001,7 @@ button:hover {
 .footer-col ul li a:visited {
     text-decoration: none;
     font-size: 13px;
-    color: #757575 !important;
+    color: #505050 !important;
     transition: color 0.2s;
 }
 
@@ -1005,7 +1018,7 @@ button:hover {
     }
     .sidebar {
         border-right: none;
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid #2d2d2d;
     }
     .register-layout {
         grid-template-columns: 1fr;
@@ -1062,7 +1075,7 @@ button:hover {
         flex-direction: column;
     }
 }
-/* Integración PHP + OpenStreetMap */
+
 .product-image {
     background-size: cover;
     background-position: center;
@@ -1115,7 +1128,7 @@ button:disabled {
 
 .form-help {
     font-size: 14px;
-    color: #757575;
+    color: #505050;
 }
 
 .map-search-row {
@@ -1128,8 +1141,9 @@ button:disabled {
 .map-search-row input {
     width: 100%;
     padding: 14px 18px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #000000;
     border-radius: 12px;
+    color: #ffffff !important;
 }
 
 .map-results {
@@ -1175,7 +1189,7 @@ button:disabled {
 }
 
 /* ========================================================================== 
-   12. ADMINISTRACIÓN REACT JSX
+   12. ADMINISTRACIÓN REACT JSX (Componentes Modo Oscuro)
    ========================================================================== */
 .admin-stat-grid {
     display: grid;
@@ -1184,23 +1198,36 @@ button:disabled {
     margin: 30px 0;
 }
 
+.admin-stat-grid .info-card {
+    background: #1a1a1a;
+    border: 1px solid #2d2d2d;
+}
+
+.admin-stat-grid .info-card h3 {
+    color: #888888;
+}
+
 .admin-stat-grid .info-card p {
     margin-top: 12px;
     font-size: 22px;
     font-weight: 800;
-    color: #111111;
+    color: #ffffff; 
 }
 
 .admin-section {
     margin-top: 40px;
 }
 
+.admin-section h2 {
+    color: #ffffff !important; 
+}
+
 .admin-storage-note {
     padding: 14px 18px;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #2d2d2d;
     border-radius: 12px;
-    background: #ffffff;
-    color: #555555;
+    background: #1a1a1a;
+    color: #e0e0e0; 
     font-size: 14px;
 }
 
@@ -1208,8 +1235,8 @@ button:disabled {
     width: 100%;
     overflow-x: auto;
     border-radius: 16px;
-    border: 1px solid #e0e0e0;
-    background: #ffffff;
+    border: 1px solid #2d2d2d;
+    background: #1a1a1a;
 }
 
 .table-wrapper .table {
@@ -1218,11 +1245,28 @@ button:disabled {
     border: none;
 }
 
+.table-wrapper .table th {
+    background: #1a1a1a;
+    color: #ffffff;
+    border-bottom: 2px solid #2d2d2d;
+}
+
+.table-wrapper .table td {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+.table-wrapper .table tr:hover td {
+    background-color: #252525;
+}
+
 .admin-badge {
     display: inline-block;
     padding: 6px 10px;
     border-radius: 999px;
-    background: #f0f0f0;
+    background: #2d2d2d;
+    color: #ffffff;
     font-size: 12px;
     font-weight: 700;
 }
@@ -1244,27 +1288,30 @@ button:disabled {
 }
 
 .admin-small-link {
-    background: #111111;
-    color: #ffffff !important;
+    background: #ffffff;
+    color: #000000 !important;
 }
 
 .danger-button {
     background: #a51d1d;
+    color: #ffffff;
 }
 
 .danger-button:hover {
     background: #7d1111;
 }
 
+/* Campos del formulario en línea del dashboard con fondos grises oscuros */
 .admin-inline-form {
     display: grid;
     grid-template-columns: repeat(5, minmax(135px, 1fr));
     gap: 12px;
     margin-bottom: 24px;
     padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #2d2d2d;
     border-radius: 16px;
-    background: #ffffff;
+    background: #1a1a1a;
+    color: #ffffff;
 }
 
 .admin-inline-form input,
@@ -1272,16 +1319,17 @@ button:disabled {
 .admin-search input {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #3d3d3d;
     border-radius: 10px;
-    background: #ffffff;
+    background: #252525;
+    color: #ffffff !important; /* Mantiene texto blanco SOLO en inputs oscuros del dashboard */
     outline: none;
 }
 
 .admin-inline-form input:focus,
 .admin-inline-form select:focus,
 .admin-search input:focus {
-    border-color: #111111;
+    border-color: #ffffff;
 }
 
 .admin-search {
@@ -1301,11 +1349,14 @@ button:disabled {
 .preview-card .image-placeholder {
     min-height: 210px;
     margin-bottom: 20px;
+    background: #252525;
+    border-color: #3d3d3d;
+    color: #aaaaaa;
 }
 
 .sidebar a:last-child {
     margin-top: auto;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #2d2d2d;
     border-radius: 0;
     padding-top: 22px;
 }
